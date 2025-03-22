@@ -1,0 +1,15 @@
+[2025-03-21T16:58:27.318+0000] {processor.py:186} INFO - Started process (PID=322) to work on /opt/airflow/dags/weather_dag.py
+[2025-03-21T16:58:27.320+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/weather_dag.py for tasks to queue
+[2025-03-21T16:58:27.324+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:27.323+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/weather_dag.py
+[2025-03-21T16:58:28.273+0000] {processor.py:925} INFO - DAG(s) 'weather_data_pipeline' retrieved from /opt/airflow/dags/weather_dag.py
+[2025-03-21T16:58:28.835+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.835+0000] {override.py:1912} INFO - Created Permission View: can read on DAG:weather_data_pipeline
+[2025-03-21T16:58:28.851+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.850+0000] {override.py:1912} INFO - Created Permission View: can delete on DAG:weather_data_pipeline
+[2025-03-21T16:58:28.864+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.863+0000] {override.py:1912} INFO - Created Permission View: can edit on DAG:weather_data_pipeline
+[2025-03-21T16:58:28.877+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.877+0000] {override.py:1912} INFO - Created Permission View: can create on DAG Run:weather_data_pipeline
+[2025-03-21T16:58:28.886+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.885+0000] {override.py:1912} INFO - Created Permission View: can read on DAG Run:weather_data_pipeline
+[2025-03-21T16:58:28.894+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.894+0000] {override.py:1912} INFO - Created Permission View: can delete on DAG Run:weather_data_pipeline
+[2025-03-21T16:58:28.904+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.903+0000] {override.py:1912} INFO - Created Permission View: menu access on DAG Run:weather_data_pipeline
+[2025-03-21T16:58:28.905+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.905+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-21T16:58:28.920+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.919+0000] {dag.py:3262} INFO - Creating ORM DAG for weather_data_pipeline
+[2025-03-21T16:58:28.934+0000] {logging_mixin.py:190} INFO - [2025-03-21T16:58:28.934+0000] {dag.py:4180} INFO - Setting next_dagrun for weather_data_pipeline to 2025-03-21 15:00:00+00:00, run_after=2025-03-21 16:00:00+00:00
+[2025-03-21T16:58:28.964+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/weather_dag.py took 1.658 seconds

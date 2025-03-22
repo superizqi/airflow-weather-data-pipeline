@@ -1,0 +1,128 @@
+[2025-03-21T18:28:50.176+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-21T18:28:50.205+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather-two-source.check_and_insert_data manual__2025-03-21T18:28:32.401675+00:00 [queued]>
+[2025-03-21T18:28:50.219+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather-two-source.check_and_insert_data manual__2025-03-21T18:28:32.401675+00:00 [queued]>
+[2025-03-21T18:28:50.220+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 2
+[2025-03-21T18:28:50.235+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): check_and_insert_data> on 2025-03-21 18:28:32.401675+00:00
+[2025-03-21T18:28:50.245+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=932) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-03-21T18:28:50.248+0000] {standard_task_runner.py:72} INFO - Started process 934 to run task
+[2025-03-21T18:28:50.248+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather-two-source', 'check_and_insert_data', 'manual__2025-03-21T18:28:32.401675+00:00', '--job-id', '110', '--raw', '--subdir', 'DAGS_FOLDER/weather-two-source.py', '--cfg-path', '/tmp/tmpufi_3ims']
+[2025-03-21T18:28:50.252+0000] {standard_task_runner.py:105} INFO - Job 110: Subtask check_and_insert_data
+[2025-03-21T18:28:50.522+0000] {task_command.py:467} INFO - Running <TaskInstance: weather-two-source.check_and_insert_data manual__2025-03-21T18:28:32.401675+00:00 [running]> on host c25e9da6226b
+[2025-03-21T18:28:50.637+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather-two-source' AIRFLOW_CTX_TASK_ID='check_and_insert_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-21T18:28:32.401675+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-03-21T18:28:32.401675+00:00'
+[2025-03-21T18:28:50.639+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-21T18:28:50.664+0000] {base.py:84} INFO - Retrieving connection 'rizqi-neon'
+[2025-03-21T18:28:53.293+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/weather-two-source.py", line 167, in check_and_insert_data
+    df_tomorrow['datetime'] = pd.to_datetime(df_tomorrow['datetime']).dt.tz_convert(None)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/accessor.py", line 112, in f
+    return self._delegate_method(name, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/accessors.py", line 134, in _delegate_method
+    result = method(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/datetimes.py", line 281, in tz_convert
+    arr = self._data.tz_convert(tz)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/arrays/datetimes.py", line 893, in tz_convert
+    raise TypeError(
+TypeError: Cannot convert tz-naive timestamps, use tz_localize to localize
+[2025-03-21T18:28:53.342+0000] {taskinstance.py:1226} INFO - Marking task as UP_FOR_RETRY. dag_id=weather-two-source, task_id=check_and_insert_data, run_id=manual__2025-03-21T18:28:32.401675+00:00, execution_date=20250321T182832, start_date=20250321T182850, end_date=20250321T182853
+[2025-03-21T18:28:53.407+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-21T18:28:53.408+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 110 for task check_and_insert_data (Cannot convert tz-naive timestamps, use tz_localize to localize; 934)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/weather-two-source.py", line 167, in check_and_insert_data
+    df_tomorrow['datetime'] = pd.to_datetime(df_tomorrow['datetime']).dt.tz_convert(None)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/accessor.py", line 112, in f
+    return self._delegate_method(name, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/accessors.py", line 134, in _delegate_method
+    result = method(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/datetimes.py", line 281, in tz_convert
+    arr = self._data.tz_convert(tz)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/arrays/datetimes.py", line 893, in tz_convert
+    raise TypeError(
+TypeError: Cannot convert tz-naive timestamps, use tz_localize to localize
+[2025-03-21T18:28:53.446+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-03-21T18:28:53.742+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-03-21T18:28:53.745+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

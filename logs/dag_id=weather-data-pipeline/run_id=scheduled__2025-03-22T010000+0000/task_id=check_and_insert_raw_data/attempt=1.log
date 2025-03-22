@@ -1,0 +1,61 @@
+[2025-03-22T02:19:37.794+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-22T02:19:37.815+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather-data-pipeline.check_and_insert_raw_data scheduled__2025-03-22T01:00:00+00:00 [queued]>
+[2025-03-22T02:19:37.825+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather-data-pipeline.check_and_insert_raw_data scheduled__2025-03-22T01:00:00+00:00 [queued]>
+[2025-03-22T02:19:37.826+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 2
+[2025-03-22T02:19:37.840+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): check_and_insert_raw_data> on 2025-03-22 01:00:00+00:00
+[2025-03-22T02:19:37.850+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=5662) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-03-22T02:19:37.852+0000] {standard_task_runner.py:72} INFO - Started process 5664 to run task
+[2025-03-22T02:19:37.852+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather-data-pipeline', 'check_and_insert_raw_data', 'scheduled__2025-03-22T01:00:00+00:00', '--job-id', '205', '--raw', '--subdir', 'DAGS_FOLDER/weather-data-pipeline.py', '--cfg-path', '/tmp/tmp6uc2ol7y']
+[2025-03-22T02:19:37.855+0000] {standard_task_runner.py:105} INFO - Job 205: Subtask check_and_insert_raw_data
+[2025-03-22T02:19:38.196+0000] {task_command.py:467} INFO - Running <TaskInstance: weather-data-pipeline.check_and_insert_raw_data scheduled__2025-03-22T01:00:00+00:00 [running]> on host c25e9da6226b
+[2025-03-22T02:19:38.348+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather-data-pipeline' AIRFLOW_CTX_TASK_ID='check_and_insert_raw_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-22T01:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-22T01:00:00+00:00'
+[2025-03-22T02:19:38.350+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-22T02:19:38.387+0000] {base.py:84} INFO - Retrieving connection 'rizqi-neon'
+[2025-03-22T02:19:41.163+0000] {weather-data-pipeline.py:180} INFO - 🔍 OpenMeteo Columns: Index(['id', 'datetime', 'temperature', 'area', 'source', 'created_at'], dtype='object')
+[2025-03-22T02:19:41.164+0000] {weather-data-pipeline.py:181} INFO - 🔍 WeatherAPI Columns: Index(['id', 'datetime', 'temperature', 'area', 'source', 'created_at'], dtype='object')
+[2025-03-22T02:19:41.166+0000] {weather-data-pipeline.py:182} INFO - 🔍 Tomorrow.io Columns: Index(['id', 'datetime', 'temperature', 'area', 'source', 'created_at'], dtype='object')
+[2025-03-22T02:19:41.166+0000] {weather-data-pipeline.py:184} INFO - 
+🔍 Data Types:
+id                     object
+datetime       datetime64[ns]
+temperature           float64
+area                   object
+source                 object
+created_at     datetime64[ns]
+dtype: object
+[2025-03-22T02:19:41.169+0000] {weather-data-pipeline.py:185} INFO - 
+🔍 Data Types:
+id                     object
+datetime       datetime64[ns]
+temperature           float64
+area                   object
+source                 object
+created_at     datetime64[ns]
+dtype: object
+[2025-03-22T02:19:41.172+0000] {weather-data-pipeline.py:186} INFO - 
+🔍 Data Types:
+id                     object
+datetime       datetime64[ns]
+temperature           float64
+area                   object
+source                 object
+created_at     datetime64[ns]
+dtype: object
+[2025-03-22T02:19:41.176+0000] {weather-data-pipeline.py:188} INFO - 
+📊 Shape (Jumlah Data): OpenMeteo: (168, 6), WeatherAPI: (24, 6), Tomorrow.io: (121, 6)
+[2025-03-22T02:19:41.188+0000] {weather-data-pipeline.py:196} INFO - 
+🚀 Hasil Akhir (Gabungan DataFrame):
+                                 id            datetime  temperature     area      source                 created_at
+0  d141d7863df92d8589c38ada109e123d 2025-03-22 00:00:00         26.8  Jakarta  Open Meteo 2025-03-22 02:19:39.446644
+1  9a76c33fd475d3dd15980ea9b0a6cf0f 2025-03-22 01:00:00         26.7  Jakarta  Open Meteo 2025-03-22 02:19:39.446644
+2  bcecc2bcc96510667af038521c26a926 2025-03-22 02:00:00         26.3  Jakarta  Open Meteo 2025-03-22 02:19:39.446644
+3  bfbcf0e41660e298c99997d3d53d7d1c 2025-03-22 03:00:00         25.9  Jakarta  Open Meteo 2025-03-22 02:19:39.446644
+4  b50fabebec04f1c1ceae4f21a3c1fe62 2025-03-22 04:00:00         25.7  Jakarta  Open Meteo 2025-03-22 02:19:39.446644
+[2025-03-22T02:19:41.273+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-03-22T02:19:41.285+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-22T02:19:41.286+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=weather-data-pipeline, task_id=check_and_insert_raw_data, run_id=scheduled__2025-03-22T01:00:00+00:00, execution_date=20250322T010000, start_date=20250322T021937, end_date=20250322T021941
+[2025-03-22T02:19:41.372+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-03-22T02:19:41.633+0000] {taskinstance.py:3901} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2025-03-22T02:19:41.635+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

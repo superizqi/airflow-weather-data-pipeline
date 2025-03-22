@@ -1,0 +1,46 @@
+[2025-03-21T22:00:01.571+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-21T22:00:01.591+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather-data-pipeline.fetch_weather_weatherapi scheduled__2025-03-21T21:00:00+00:00 [queued]>
+[2025-03-21T22:00:01.600+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather-data-pipeline.fetch_weather_weatherapi scheduled__2025-03-21T21:00:00+00:00 [queued]>
+[2025-03-21T22:00:01.600+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 2
+[2025-03-21T22:00:01.616+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): fetch_weather_weatherapi> on 2025-03-21 21:00:00+00:00
+[2025-03-21T22:00:01.625+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=3847) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-03-21T22:00:01.627+0000] {standard_task_runner.py:72} INFO - Started process 3853 to run task
+[2025-03-21T22:00:01.629+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather-data-pipeline', 'fetch_weather_weatherapi', 'scheduled__2025-03-21T21:00:00+00:00', '--job-id', '173', '--raw', '--subdir', 'DAGS_FOLDER/weather-data-pipeline.py', '--cfg-path', '/tmp/tmpuath2a16']
+[2025-03-21T22:00:01.633+0000] {standard_task_runner.py:105} INFO - Job 173: Subtask fetch_weather_weatherapi
+[2025-03-21T22:00:01.691+0000] {task_command.py:467} INFO - Running <TaskInstance: weather-data-pipeline.fetch_weather_weatherapi scheduled__2025-03-21T21:00:00+00:00 [running]> on host c25e9da6226b
+[2025-03-21T22:00:02.101+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather-data-pipeline' AIRFLOW_CTX_TASK_ID='fetch_weather_weatherapi' AIRFLOW_CTX_EXECUTION_DATE='2025-03-21T21:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-21T21:00:00+00:00'
+[2025-03-21T22:00:02.106+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-21T22:00:03.901+0000] {python.py:240} INFO - Done. Returned value was:               datetime  ...                                id
+0  2025-03-22 00:00:00  ...  9e55be00c98f32bc8032b34452053837
+1  2025-03-22 01:00:00  ...  b67849ed3ee6c45ae8e2fda47b86b17f
+2  2025-03-22 02:00:00  ...  4775846e68ca93716e4656c248ef9e8b
+3  2025-03-22 03:00:00  ...  13b94e9431e4932e94ee8480286409e1
+4  2025-03-22 04:00:00  ...  6aab514f4c2c262b28920da332bb4cba
+5  2025-03-22 05:00:00  ...  b1421f9c4767d09c01799d3018b71972
+6  2025-03-22 06:00:00  ...  8cb4a969288b962e22f8d62f0e40e804
+7  2025-03-22 07:00:00  ...  bf97df92b446700a53cbb3200bedebe4
+8  2025-03-22 08:00:00  ...  8f2fbc7b2b52ba50b1a2511b9da4efb0
+9  2025-03-22 09:00:00  ...  0e82b634c6c1c415874ccf469da61ef4
+10 2025-03-22 10:00:00  ...  2319fcff4155ad76220f7b6595ecb6ff
+11 2025-03-22 11:00:00  ...  bbc285674d3a8b090d3fb56265a89298
+12 2025-03-22 12:00:00  ...  8b70aa636d1339600093937e40388c81
+13 2025-03-22 13:00:00  ...  8fd77365f6e37e0c94ecf7cce5829916
+14 2025-03-22 14:00:00  ...  8391e85a311f2bd1ce4eca9892121827
+15 2025-03-22 15:00:00  ...  ee8230ae33b612333dc6b9bd4eb2d484
+16 2025-03-22 16:00:00  ...  1d742e55e343a8d343e4307b585ecc79
+17 2025-03-22 17:00:00  ...  199a1b7afef8b187704ae20a0f600a8a
+18 2025-03-22 18:00:00  ...  672f583c8d34758c1276bfe5fc45072e
+19 2025-03-22 19:00:00  ...  4bf7cbe3ceb2de79b710e2a263db0a77
+20 2025-03-22 20:00:00  ...  f99e8aab01eb889932c3043517fb20f6
+21 2025-03-22 21:00:00  ...  2d52f99b7d9978f353bdfadeebab4eb8
+22 2025-03-22 22:00:00  ...  9bdc3d781a942a764f3bccf0ad26d156
+23 2025-03-22 23:00:00  ...  a0f86852cccdfb4da53b73ee43e4ec33
+
+[24 rows x 6 columns]
+[2025-03-21T22:00:03.955+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-21T22:00:03.956+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=weather-data-pipeline, task_id=fetch_weather_weatherapi, run_id=scheduled__2025-03-21T21:00:00+00:00, execution_date=20250321T210000, start_date=20250321T220001, end_date=20250321T220003
+[2025-03-21T22:00:04.011+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-03-21T22:00:04.189+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-03-21T22:00:04.201+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

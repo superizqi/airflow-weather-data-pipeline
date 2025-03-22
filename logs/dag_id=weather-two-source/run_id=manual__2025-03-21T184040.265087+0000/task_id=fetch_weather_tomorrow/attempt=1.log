@@ -1,0 +1,33 @@
+[2025-03-21T18:40:49.405+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-21T18:40:49.455+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather-two-source.fetch_weather_tomorrow manual__2025-03-21T18:40:40.265087+00:00 [queued]>
+[2025-03-21T18:40:49.478+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather-two-source.fetch_weather_tomorrow manual__2025-03-21T18:40:40.265087+00:00 [queued]>
+[2025-03-21T18:40:49.479+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 2
+[2025-03-21T18:40:49.506+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): fetch_weather_tomorrow> on 2025-03-21 18:40:40.265087+00:00
+[2025-03-21T18:40:49.531+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1110) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-03-21T18:40:49.535+0000] {standard_task_runner.py:72} INFO - Started process 1116 to run task
+[2025-03-21T18:40:49.537+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather-two-source', 'fetch_weather_tomorrow', 'manual__2025-03-21T18:40:40.265087+00:00', '--job-id', '120', '--raw', '--subdir', 'DAGS_FOLDER/weather-two-source.py', '--cfg-path', '/tmp/tmp9g8c7bem']
+[2025-03-21T18:40:49.543+0000] {standard_task_runner.py:105} INFO - Job 120: Subtask fetch_weather_tomorrow
+[2025-03-21T18:40:51.287+0000] {task_command.py:467} INFO - Running <TaskInstance: weather-two-source.fetch_weather_tomorrow manual__2025-03-21T18:40:40.265087+00:00 [running]> on host c25e9da6226b
+[2025-03-21T18:40:51.533+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather-two-source' AIRFLOW_CTX_TASK_ID='fetch_weather_tomorrow' AIRFLOW_CTX_EXECUTION_DATE='2025-03-21T18:40:40.265087+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-03-21T18:40:40.265087+00:00'
+[2025-03-21T18:40:51.536+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-21T18:40:53.566+0000] {python.py:240} INFO - Done. Returned value was:                datetime  ...                                id
+0   2025-03-21 18:00:00  ...  729315cbd7253d928f3567e4a3915539
+1   2025-03-21 19:00:00  ...  fc5084a93de4b44f9bcd3f4dabf3a246
+2   2025-03-21 20:00:00  ...  c3fcd16407cf6889274f95f7901da387
+3   2025-03-21 21:00:00  ...  49bba3c3abf918a63c7a3a280494bbb5
+4   2025-03-21 22:00:00  ...  f710bb6389cb3585aa7ee83fbb77578e
+..                  ...  ...                               ...
+116 2025-03-26 14:00:00  ...  825ac6ae0203d62f19d8ee310408e737
+117 2025-03-26 15:00:00  ...  c26bfc4a28d0fe1d43d73ca7406a462c
+118 2025-03-26 16:00:00  ...  bade1d9be667b9a0c85baabae88cbf30
+119 2025-03-26 17:00:00  ...  c815a1943112db8980f44034d9bc2fbc
+120 2025-03-26 18:00:00  ...  72db1191d1a9970f9e337937fe6e1b3d
+
+[121 rows x 6 columns]
+[2025-03-21T18:40:53.645+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-21T18:40:53.646+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=weather-two-source, task_id=fetch_weather_tomorrow, run_id=manual__2025-03-21T18:40:40.265087+00:00, execution_date=20250321T184040, start_date=20250321T184049, end_date=20250321T184053
+[2025-03-21T18:40:53.718+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-03-21T18:40:54.068+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-03-21T18:40:54.073+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

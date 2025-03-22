@@ -1,0 +1,150 @@
+[2025-03-21T18:01:20.705+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-21T18:01:20.747+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather-two-source.check_and_insert_data scheduled__2025-03-21T17:00:00+00:00 [queued]>
+[2025-03-21T18:01:20.771+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather-two-source.check_and_insert_data scheduled__2025-03-21T17:00:00+00:00 [queued]>
+[2025-03-21T18:01:20.773+0000] {taskinstance.py:2867} INFO - Starting attempt 2 of 2
+[2025-03-21T18:01:20.796+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): check_and_insert_data> on 2025-03-21 17:00:00+00:00
+[2025-03-21T18:01:20.808+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=506) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-03-21T18:01:20.812+0000] {standard_task_runner.py:72} INFO - Started process 508 to run task
+[2025-03-21T18:01:20.811+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather-two-source', 'check_and_insert_data', 'scheduled__2025-03-21T17:00:00+00:00', '--job-id', '87', '--raw', '--subdir', 'DAGS_FOLDER/weather-two-source.py', '--cfg-path', '/tmp/tmpcj62wz6w']
+[2025-03-21T18:01:20.815+0000] {standard_task_runner.py:105} INFO - Job 87: Subtask check_and_insert_data
+[2025-03-21T18:01:21.326+0000] {task_command.py:467} INFO - Running <TaskInstance: weather-two-source.check_and_insert_data scheduled__2025-03-21T17:00:00+00:00 [running]> on host c25e9da6226b
+[2025-03-21T18:01:21.472+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather-two-source' AIRFLOW_CTX_TASK_ID='check_and_insert_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-21T17:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-21T17:00:00+00:00'
+[2025-03-21T18:01:21.474+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-03-21T18:01:21.512+0000] {base.py:84} INFO - Retrieving connection 'rizqi-neon'
+[2025-03-21T18:01:24.205+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/weather-two-source.py", line 153, in check_and_insert_data
+    df = pd.concat([df_openmeteo, df_weatherapi, df_tomorrow], ignore_index=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/reshape/concat.py", line 393, in concat
+    return op.get_result()
+           ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/reshape/concat.py", line 680, in get_result
+    new_data = concatenate_managers(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/internals/concat.py", line 189, in concatenate_managers
+    values = _concatenate_join_units(join_units, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/internals/concat.py", line 486, in _concatenate_join_units
+    concat_values = concat_compat(to_concat, axis=1)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/dtypes/concat.py", line 132, in concat_compat
+    return cls._concat_same_type(to_concat_eas)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/arrays/datetimelike.py", line 2251, in _concat_same_type
+    new_obj = super()._concat_same_type(to_concat, axis)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/arrays/_mixins.py", line 230, in _concat_same_type
+    return super()._concat_same_type(to_concat, axis=axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "arrays.pyx", line 190, in pandas._libs.arrays.NDArrayBacked._concat_same_type
+ValueError: all the input array dimensions except for the concatenation axis must match exactly, but along dimension 1, the array at index 0 has size 168 and the array at index 1 has size 24
+[2025-03-21T18:01:24.250+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=weather-two-source, task_id=check_and_insert_data, run_id=scheduled__2025-03-21T17:00:00+00:00, execution_date=20250321T170000, start_date=20250321T180120, end_date=20250321T180124
+[2025-03-21T18:01:24.307+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-03-21T18:01:24.308+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 87 for task check_and_insert_data (all the input array dimensions except for the concatenation axis must match exactly, but along dimension 1, the array at index 0 has size 168 and the array at index 1 has size 24; 508)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/weather-two-source.py", line 153, in check_and_insert_data
+    df = pd.concat([df_openmeteo, df_weatherapi, df_tomorrow], ignore_index=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/reshape/concat.py", line 393, in concat
+    return op.get_result()
+           ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/reshape/concat.py", line 680, in get_result
+    new_data = concatenate_managers(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/internals/concat.py", line 189, in concatenate_managers
+    values = _concatenate_join_units(join_units, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/internals/concat.py", line 486, in _concatenate_join_units
+    concat_values = concat_compat(to_concat, axis=1)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/dtypes/concat.py", line 132, in concat_compat
+    return cls._concat_same_type(to_concat_eas)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/arrays/datetimelike.py", line 2251, in _concat_same_type
+    new_obj = super()._concat_same_type(to_concat, axis)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/arrays/_mixins.py", line 230, in _concat_same_type
+    return super()._concat_same_type(to_concat, axis=axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "arrays.pyx", line 190, in pandas._libs.arrays.NDArrayBacked._concat_same_type
+ValueError: all the input array dimensions except for the concatenation axis must match exactly, but along dimension 1, the array at index 0 has size 168 and the array at index 1 has size 24
+[2025-03-21T18:01:24.362+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-03-21T18:01:24.618+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-03-21T18:01:24.621+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
