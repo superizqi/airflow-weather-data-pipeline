@@ -1,15 +1,15 @@
-# Weather Data Pipeline
+# 🌦️ Weather Data Pipeline
 
 This project is an Airflow pipeline for retrieving and storing weather temperature data from Open Meteo, WeatherAPI, and Tomorrow.io into a PostgreSQL database. The pipeline fetches hourly temperature data, processes it, and stores it in structured tables for analysis and reporting.
 
-## Features
+## 🚀 Features
 - Fetches weather temperature data from three sources: Open Meteo, WeatherAPI, and Tomorrow.io.
 - Stores raw data in a `weather_data` table in PostgreSQL.
 - Processes and organizes data into fact and dimension tables.
 - Aggregates temperature data into daily, weekly, and monthly marts.
 - Uses Apache Airflow for automation and scheduling.
 
-## Database Schema
+## 🏛️ Database Schema
 ### Tables
 1. **weather_data** (Raw hourly weather data)
    - `id` (TEXT, Primary Key)
@@ -41,7 +41,7 @@ This project is an Airflow pipeline for retrieving and storing weather temperatu
    - `avg_temperature` (FLOAT)
    - `area` (TEXT)
 
-## Installation & Setup
+## ⚙️ Installation & Setup
 ### Prerequisites
 - **Apache Airflow** (installed and running)
 - **PostgreSQL** (database configured)
@@ -52,19 +52,19 @@ This project is an Airflow pipeline for retrieving and storing weather temperatu
 2. Update API keys in the DAG script.
 3. Deploy the DAG to your Airflow environment.
 
-## DAG Workflow
+## 🔄 DAG Workflow
 1. **Extract Data**: Fetches data from Open Meteo, WeatherAPI, and Tomorrow.io.
 2. **Transform Data**: Ensures consistent datetime formats and removes duplicates.
 3. **Load Data**: Stores data in `weather_data`.
 4. **Create Fact & Dimension Tables**: Ensures required tables exist.
 5. **Process Mart Data**: Aggregates data into daily, weekly, and monthly marts.
 
-## Running the Pipeline
+## ▶️ Running the Pipeline
 1. Start the Airflow scheduler and webserver.
 2. Trigger the DAG manually or set a schedule.
 3. Monitor logs for errors.
 
-## Dashboard Integration
+## 📊 Dashboard Integration
 The processed data can be visualized in **Metabase** with interactive filtering using the `datetime` column.
 
 ## Timezone Handling
